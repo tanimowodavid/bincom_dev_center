@@ -1,0 +1,43 @@
+{% extends "base/base.html" %} {% block title %}Upload Media | Multimedia Gallery{% endblock title %} 
+{% block content %}
+    <div class="mb-4">
+    <a href="{% url 'base:home' %}" class="btn btn-secondary">&laquo; Back to Gallery</a
+    >
+    </div>
+    <div class="card">
+    <div class="card-body">
+        <h1 class="card-title mb-4">Upload New Media</h1>
+        <form method="post" enctype="multipart/form-data" novalidate>
+        {% csrf_token %} 
+        {% if form.non_field_errors %}
+            <div class="alert alert-danger">{{ form.non_field_errors }}</div>
+        {% endif %}
+        <div class="mb-3">
+            {{ form.title.label_tag }} {{ form.title }} 
+            {% for error in form.title.errors %}
+                <div class="text-danger small">{{ error }}</div>
+            {% endfor %}
+        </div>
+        <div class="mb-3">
+            {{ form.description.label_tag }} {{ form.description }} 
+            {% for error in form.description.errors %}
+                <div class="text-danger small">{{ error }}</div>
+            {% endfor %}
+        </div>
+        <div class="mb-3">
+            {{ form.file.label_tag }} {{ form.file }} 
+            {% for error in form.file.errors %}
+                <div class="text-danger small">{{ error }}</div>
+            {% endfor %}
+        </div>
+        <div class="mb-3">
+            {{ form.media_type.label_tag }} {{ form.media_type }} 
+            {% for error in form.media_type.errors %}
+                <div class="text-danger small">{{ error }}</div>
+            {% endfor %}
+        </div>
+        <button type="submit" class="btn btn-primary">Upload</button>
+        </form>
+    </div>
+    </div>
+{% endblock content %}

@@ -1,0 +1,49 @@
+{% extends "base/base.html" %} {% block title %}Home | Multimedia Gallery {% endblock title %} {% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+  <div>
+    <h1 class="mb-0">Multimedia Gallery</h1>
+    <p class="text-muted">All uploaded images, videos, and audio files.</p>
+  </div>
+  <a href="{% url 'base:upload' %}" class="btn btn-primary">Upload New</a>
+</div>
+
+{% if media_list %}
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
+  {% for media in media_list %}
+  <div class="col">
+    <div class="card h-100 media-card">
+      <a
+        href="{% url 'base:detail' media.pk %}"
+        class="text-decoration-none text-dark"
+      >
+        {% if media.media_type == 'image' %}
+        <img
+          src="{{ media.file.url }}"
+          class="card-img-top"
+          alt="{{ media.title }}"
+        />
+        {% elif media.media_type == 'video' %}
+        <video class="card-img-top" controls muted>
+          <source src="{{ media.file.url }}" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+        {% else %}
+        <div class="media-placeholder">Audio file</div>
+        {% endif %}
+        <div class="card-body">
+          <h5 class="card-title">{{ media.title }}</h5>
+          <p class="card-text text-truncate">{{ media.description }}</p>
+        </div>
+        <div class="card-footer text-muted">
+          {{ media.uploaded_at|date:"M d, Y H:i" }}
+        </div>
+      </a>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% else %}
+<div class="alert alert-secondary">
+  No media uploaded yet. Use the upload page to add your first item.
+</div>
+{% endif %} {% endblock content %}

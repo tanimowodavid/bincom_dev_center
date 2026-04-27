@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{% block title %}Multimedia Gallery{% endblock title %}</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-C6xB8swQxV+GbiSWsNbo2EXeCpZrimn6CS7ttY3MiExp9x5z+xIZX1yK7gHjXQxg"
+      crossorigin="anonymous"
+    />
+    <style>
+      body {
+        padding-top: 70px;
+      }
+      .media-card img,
+      .media-card video {
+        height: 220px;
+        object-fit: cover;
+        width: 100%;
+      }
+      .media-placeholder {
+        min-height: 220px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #f8f9fa;
+        color: #6c757d;
+        font-size: 1.1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="{% url 'base:home' %}"
+          >Multimedia Gallery</a
+        >
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navMenu"
+          aria-controls="navMenu"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navMenu">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'base:home' %}">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'base:upload' %}">Upload</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container">{% block content %}{% endblock content %}</div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-xk0J/2rdc+p7L9PFmyi1nGiUKsPloUQ3FVg0ERiXoDtpjgdBv6QcHBlcCjaW0tx3"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
