@@ -22,4 +22,14 @@ cd bincom_dev_center
 pip install -r requirements.txt
 ```
 
-4. open and contact session and run the `answer.py` file
+4. open any contact session and run the `answer.py` file (exception for session 5)
+
+## session 5
+
+cd into 5th_contact_session and run command
+
+```bash
+python manage.py runserver
+```
+
+then open your browser and visit `http://127.0.0.1:8000/`
