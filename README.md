@@ -1,6 +1,6 @@
 ## Bincom Dev Center
 
-This repo contains all the questions and answers for bincom dev center beginner python class.
+This repo contains my version to all the questions and answers for bincom dev center beginner and intermediate python class.
 
 ## Getting started
 
@@ -22,11 +22,11 @@ cd bincom_dev_center
 pip install -r requirements.txt
 ```
 
-4. open any contact session and run the `answer.py` file (exception for session 5)
+4. open any contact session and run the `answer.py` file (exception for session 5 (beginner))
 
-## session 5
+## session 5 (beginner)
 
-cd into 5th_contact_session and run command
+cd into python_beginner_class/5th_contact_session and run command
 
 ```bash
 python manage.py runserver
